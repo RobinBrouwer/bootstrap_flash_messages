@@ -22,7 +22,7 @@ And that's it!
 
 ## Changes
 
-Version 0.0.1 changes (8/08/2012):
+Version 0.0.1 changes (08/08/2012):
     
     - Changed redirect_to method
     - Added flash! and flash_now! methods
@@ -32,7 +32,7 @@ Version 0.0.1 changes (8/08/2012):
 
 ## Usage
 
-You need [Twitter Bootstrap](http://twitter.github.com/bootstrap/components.html#alerts) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself.
+You need [Twitter Bootstrap](http://twitter.github.com/bootstrap) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://twitter.github.com/bootstrap/components.html#alerts).
 
 All flash messages are defined inside config/locales/flash.en.yml. They are nested like this:
 
@@ -52,7 +52,7 @@ You have four keys:
     :warning
     :error
 
-When you defined the messages it's really easy to set them inside your Controller.
+When you've defined the messages it's really easy to call them inside your Controller.
 
     class PostsController
       def create
@@ -70,12 +70,12 @@ You can use the `:flash` parameter inside the `redirect_to` method (note: this g
 
     redirect_to(@post, :flash => [:success, :info])
 
-You can still use a Hash to use the default `redirect_to` behaviour. When you don't want to use the `redirect_to` method to set the flash messages, you can use the `flash!` method.
+You can still use a Hash to use the default `redirect_to` behavior. When you don't want to use the `redirect_to` method to set the flash messages, you can use the `flash!` method.
 
     flash!(:success, :info)
     redirect_to(@post)
 
-When you want to use `flash.now` you can use the new `flash_now!` method.
+When you need to use `flash.now` you can use the new `flash_now!` method.
 
     flash_now!(:error, :warning)
 
@@ -89,7 +89,7 @@ And that's it! To change the flash messages inside a `.js.erb` file, you can do 
 
     $("#flash_messages").html("#{j(flash_messages)}");
 
-The `flash_messages` helper shows a simple Bootstrap alert box. When you want to add a close button you can add the :close option.
+The `flash_messages` helper shows a simple Bootstrap alert box. If you want to add a close button you can add the :close option.
 
     <%= flash_messages(:close) %>
 
@@ -101,7 +101,7 @@ Want a heading? Add :heading. The headings inside flash.en.yml are used.
 
     <%= flash_messages(:close, :block, :heading) %>
 
-And that's it!
+And that's it! Have fun. :)
 
 
 ## Why I created this gem
