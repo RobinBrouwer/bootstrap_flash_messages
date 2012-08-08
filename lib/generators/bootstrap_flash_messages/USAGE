@@ -1,0 +1,7 @@
+Available generators:
+  bootstrap_flash_messages:locale
+
+Examples:
+  rails g bootstrap_flash_messages:locale
+  This will create:
+    config/locales/flash.en.yml

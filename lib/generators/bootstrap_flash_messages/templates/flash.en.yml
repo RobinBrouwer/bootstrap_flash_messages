@@ -1,0 +1,35 @@
+en:
+  flash_messages:
+    #
+    # These are the translations for the different headings.
+    #
+    headings:
+      success: "Success!"
+      info: "Info!"
+      warning: "Warning!"
+      error: "Error!"
+    #
+    # Add flash messages for controller actions:
+    # products:
+    #   create:
+    #     success: "This is a notification"
+    #     error: "Something went wrong"
+    #
+    # Inside controller:
+    # def create
+    #   flash!(:success, :error)
+    #   redirect_to(:root)
+    # end
+    #
+    # OR
+    # 
+    # def create
+    #   redirect_to(:root, :flash => [:success, :error])
+    # end
+    #
+    # OR
+    #
+    # def create
+    #   flash_now!(:success, :error)
+    #   render("new")
+    # end

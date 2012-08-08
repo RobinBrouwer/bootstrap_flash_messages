@@ -1,0 +1,4 @@
+.DS_Store
+bootstrap_flash_messages*.gem
+.bundle
+pkg
