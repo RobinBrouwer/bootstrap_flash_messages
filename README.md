@@ -66,7 +66,7 @@ When you've defined the messages it's really easy to call them inside your Contr
       end
     end
 
-You can use the `:flash` parameter inside the `redirect_to` method (note: this gem changes the redirect_to method!) to set the flash messages. You only need to pass the corresponding key and the gem will automatically set `gflash[:success]` to `t("flash_messages.posts.create.success")`. The `:flash` parameter also accepts an Array.
+You can use the `:flash` parameter inside the `redirect_to` method (note: this gem changes the redirect_to method!) to set the flash messages. You only need to pass the corresponding key and the gem will automatically set `flash[:success]` to `t("flash_messages.posts.create.success")`. The `:flash` parameter also accepts an Array.
 
     redirect_to(@post, :flash => [:success, :info])
 
@@ -89,15 +89,15 @@ And that's it! To change the flash messages inside a `.js.erb` file, you can do 
 
     $("#flash_messages").html("#{j(flash_messages)}");
 
-The `flash_messages` helper shows a simple Bootstrap alert box. If you want to add a close button you can add the :close option.
+The `flash_messages` helper shows a simple Bootstrap alert box. If you want to add a close button you can add the `:close` option.
 
     <%= flash_messages(:close) %>
 
-Want to use the `.alert-block` class? Just add :block.
+Want to use the `.alert-block` class? Just add `:block`.
 
     <%= flash_messages(:close, :block) %>
 
-Want a heading? Add :heading. The headings inside flash.en.yml are used.
+Want a heading? Add `:heading`. The headings inside flash.en.yml are used for the headings.
 
     <%= flash_messages(:close, :block, :heading) %>
 
