@@ -15,7 +15,7 @@ module BootstrapFlashMessages
           end
           close = ""
           if show_close
-            close = link_to("x", "#", :class => "close", :data => { :dismiss => "alert" })
+            close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
           end
           
           messages << content_tag(:div, :class => "alert alert-#{key} #{"alert-block" if block}") do
