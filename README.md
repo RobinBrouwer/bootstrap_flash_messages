@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.1
+    version 0.0.2
     Robin Brouwer
     45north
 
@@ -21,6 +21,10 @@ And that's it!
 
 
 ## Changes
+
+Version 0.0.2 changes (10/08/2012):
+    
+    - Changed the 'x' in close to & t i m e s ;
 
 Version 0.0.1 changes (08/08/2012):
     
