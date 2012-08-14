@@ -22,6 +22,10 @@ And that's it!
 
 ## Changes
 
+Version 0.0.3 changes (14/08/2012):
+    
+    - Added interpolation to the flash messages
+    
 Version 0.0.2 changes (10/08/2012):
     
     - Changed the 'x' in close to & t i m e s ;
@@ -106,6 +110,19 @@ Want a heading? Add `:heading`. The headings inside flash.en.yml are used for th
     <%= flash_messages(:close, :block, :heading) %>
 
 And that's it! Have fun. :)
+
+## Interpolation
+
+You can use i18n interpolation like this:
+
+    redirect_to :root, :flash => [:success, :info], :locals => { :name => @user.name, :email => @user.email }
+    flash! :success, :info, :locals => { :name => @user.name, :email => @user.email }
+    flash_now! :success, :info, :locals => { :name => @user.name, :email => @user.email }
+
+Inside `flash.en.yml` you can do the following:
+
+    success: "Welcome, %{name}."
+    info: "Your e-mail address has been changed to: %{email}."
 
 
 ## Why I created this gem
