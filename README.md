@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.2
+    version 0.0.3
     Robin Brouwer
     45north
 
