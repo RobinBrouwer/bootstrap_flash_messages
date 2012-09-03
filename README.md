@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.3
+    version 0.0.4
     Robin Brouwer
     45north
 
@@ -21,6 +21,19 @@ And that's it!
 
 
 ## Changes
+
+Version 0.0.4 changes (03/09/2012):
+    
+    - Namespaced Controllers can be accessed by nesting your locales.
+      
+    # Old
+    "admin/products":
+      ...
+    
+    # New:
+    admin:
+      products:
+        ...
 
 Version 0.0.3 changes (14/08/2012):
     

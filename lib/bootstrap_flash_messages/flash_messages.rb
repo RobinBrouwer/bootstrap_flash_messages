@@ -7,10 +7,10 @@ module BootstrapFlashMessages
         locals = response_status_and_flash[:locals]
         if messages.is_a?(Array)
           messages.each do |key|
-            flashes[key] = flash_messages(params[:controller], params[:action], key, locals)
+            flashes[key] = flash_messages(key, locals)
           end
         else
-          flashes[messages] = flash_messages(params[:controller], params[:action], messages, locals)
+          flashes[messages] = flash_messages(messages, locals)
         end
         response_status_and_flash.delete(:locals)
         response_status_and_flash[:flash] = flashes
@@ -23,20 +23,22 @@ module BootstrapFlashMessages
     def flash!(*args)
       options = args.extract_options!
       args.each do |key|
-        flash[key] = flash_messages(params[:controller], params[:action], key, options[:locals])
+        flash[key] = flash_messages(key, options[:locals])
       end
     end
 
     def flash_now!(*args)
       options = args.extract_options!
       args.each do |key|
-        flash.now[key] = flash_messages(params[:controller], params[:action], key, options[:locals])
+        flash.now[key] = flash_messages(key, options[:locals])
       end
     end
 
-    def flash_messages(*args)
+    def flash_messages(key, *args)
+      i18n_key = "flash_messages.#{params[:controller]}.#{params[:action]}.#{key}"
       options = args.extract_options!
-      I18n.t("flash_messages.#{args.join(".")}", options)
+      options[:default] = i18n_key.to_sym
+      I18n.t(i18n_key.gsub(/\//, "."), options)
     end
   end
 end
