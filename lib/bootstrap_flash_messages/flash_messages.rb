@@ -38,7 +38,7 @@ module BootstrapFlashMessages
       i18n_key = "flash_messages.#{params[:controller]}.#{params[:action]}.#{key}"
       options = args.extract_options!
       options[:default] = i18n_key.to_sym
-      I18n.t(i18n_key.gsub(/\//, "."), options)
+      I18n.t(i18n_key.gsub(/\//, "."), options).html_safe
     end
   end
 end
