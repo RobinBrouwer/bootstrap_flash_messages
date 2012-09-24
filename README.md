@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.4
+    version 0.0.5
     Robin Brouwer
     45north
 
@@ -21,6 +21,11 @@ And that's it!
 
 
 ## Changes
+
+Version 0.0.5 changes (24/09/2012):
+    
+    - Added HTML escape option for flash_messages helper (:html).
+    - Also added option to convert new-lines to br-tags (:convert_newlines).
 
 Version 0.0.4 changes (03/09/2012):
     
@@ -121,6 +126,14 @@ Want to use the `.alert-block` class? Just add `:block`.
 Want a heading? Add `:heading`. The headings inside flash.en.yml are used for the headings.
 
     <%= flash_messages(:close, :block, :heading) %>
+
+Need to display HTML inside the flash messages? Use the `:html` option.
+
+    <%= flash_messages(:html) %>
+
+It's also possible to convert new-lines (\n) into br-tags using the `:convert_newlines` option. This option also unescapes all other HTML, so use it with care.
+
+    <%= flash_messages(:convert_newlines) %>
 
 And that's it! Have fun. :)
 
