@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.5
+    version 0.0.6
     Robin Brouwer
     45north
 
@@ -21,6 +21,10 @@ And that's it!
 
 
 ## Changes
+
+Version 0.0.6 changes (27/09/2012):
+    
+    - Added pull request #5 by protolif. This adds the :fade option.
 
 Version 0.0.5 changes (24/09/2012):
     
@@ -60,7 +64,7 @@ Version 0.0.1 changes (08/08/2012):
 
 You need [Twitter Bootstrap](http://twitter.github.com/bootstrap) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://twitter.github.com/bootstrap/components.html#alerts).
 
-If you're [customizing Bootstrap](http://twitter.github.com/bootstrap/customize.html), make sure to grab the "Alert Messages", "Component Animations", and "Transitions" (The latter two are optional, unless you want the fade-out animation on close).
+If you're [customizing Bootstrap](http://twitter.github.com/bootstrap/customize.html), make sure to grab the "Alert Messages", "Component Animations", and "Transitions" (the latter two are optional, unless you want the fade-out animation on close).
 
 All flash messages are defined inside config/locales/flash.en.yml. They are nested like this:
 
