@@ -7,6 +7,7 @@ module BootstrapFlashMessages
         show_close = args.include?(:close)
         unescape_html = args.include?(:html)
         convert_newlines = args.include?(:convert_newlines)
+        fade = args.include?(:fade)
         
         messages = []
         flash.each do |key, value|
@@ -22,7 +23,7 @@ module BootstrapFlashMessages
           
           value.gsub!("\n", "<br/>") if convert_newlines
           
-          messages << content_tag(:div, :class => "alert alert-#{key} #{"alert-block" if block}") do
+          messages << content_tag(:div, :class => "alert alert-#{key}#{" alert-block" if block}#{" fade in" if fade}") do
             close + heading + " " + (unescape_html || convert_newlines ? raw(value) : value)
           end
         end

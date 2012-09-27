@@ -60,6 +60,8 @@ Version 0.0.1 changes (08/08/2012):
 
 You need [Twitter Bootstrap](http://twitter.github.com/bootstrap) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://twitter.github.com/bootstrap/components.html#alerts).
 
+If you're [customizing Bootstrap](http://twitter.github.com/bootstrap/customize.html), make sure to grab the "Alert Messages", "Component Animations", and "Transitions" (The latter two are optional, unless you want the fade-out animation on close).
+
 All flash messages are defined inside config/locales/flash.en.yml. They are nested like this:
 
     en:
@@ -118,6 +120,10 @@ And that's it! To change the flash messages inside a `.js.erb` file, you can do 
 The `flash_messages` helper shows a simple Bootstrap alert box. If you want to add a close button you can add the `:close` option.
 
     <%= flash_messages(:close) %>
+
+If you'd like for the flash message to fade out when you click on the close icon, you can pass in the `:fade` option. This requires `:close` to work, obviously.
+
+    <%= flash_messages(:close, :fade) %>
 
 Want to use the `.alert-block` class? Just add `:block`.
 
