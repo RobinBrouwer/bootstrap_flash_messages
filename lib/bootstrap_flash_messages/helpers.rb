@@ -23,7 +23,7 @@ module BootstrapFlashMessages
           
           value.gsub!("\n", "<br/>") if convert_newlines
           
-          messages << content_tag(:div, :class => "alert alert-#{key}#{" alert-block" if block}#{" fade in" if fade}") do
+          messages << content_tag(:div, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{" alert-block" if block}#{" fade in" if fade}") do
             close + heading + " " + (unescape_html || convert_newlines ? raw(value) : value)
           end
         end

@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 0.0.6
+    version 0.0.7
     Robin Brouwer
     45north
 
@@ -21,6 +21,10 @@ And that's it!
 
 
 ## Changes
+
+Version 0.0.7 changes (26/01/2013):
+    
+    - Added alert_class_mapping (documentation below).
 
 Version 0.0.6 changes (27/09/2012):
     
@@ -160,6 +164,36 @@ Inside `flash.en.yml` you can do the following:
     success: "Welcome, %{name}."
     info: "Your e-mail address has been changed to: %{email}."
 
+## alert_class_mapping
+
+You can map the keys used inside the flash messages to a different alert class. There are 4 different classes for the alert messages inside bootstrap:
+
+    alert-success
+    alert-info
+    alert-warning
+    alert-error
+
+When you use `:notice` the alert class is mapped (by default) to `alert-success`. So it looks like this:
+
+    :notice  maps to "alert-success"
+    :success maps to "alert-success"
+    :info    maps to "alert-info"
+    :warning maps to "alert-warning"
+    :error   maps to "alert-error"
+
+Changing the mapping is quite easy. Create an initializer (config/initializers/bootstrap_flash_messages.rb) and add the following:
+
+    module BootstrapFlashMessages
+      @alert_class_mapping = {
+        :notice => :error,
+        :success => :success,
+        :info => :info,
+        :warning => :warning,
+        :error => :error
+      }
+    end
+
+Now you can map whatever alert class you want to the different keys.
 
 ## Why I created this gem
 
