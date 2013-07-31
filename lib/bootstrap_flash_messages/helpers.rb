@@ -11,7 +11,6 @@ module BootstrapFlashMessages
         
         messages = []
         flash.each do |key, value|
-          debugger
           next if key == :timedout
 
           heading = ""
