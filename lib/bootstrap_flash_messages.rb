@@ -2,7 +2,7 @@ require 'bootstrap_flash_messages/helpers'
 require 'bootstrap_flash_messages/flash_messages'
 
 module BootstrapFlashMessages
-  @alert_class_mapping = { :notice => :success, :success => :success, :info => :info, :warning => :warning, :error => :danger }
+  @alert_class_mapping = { :notice => :success, :success => :success, :info => :info, :warning => :warning, :alert => :warning, :error => :danger }
   
   def self.alert_class_mapping(key)
     @alert_class_mapping[key.to_sym]
