@@ -18,7 +18,8 @@ module BootstrapFlashMessages
           end
           close = ""
           if show_close
-            close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
+            #close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
+            close = content_tag :button, raw("&times;"), :type => 'button', :class => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'
           end
           
           value.gsub!("\n", "<br/>") if convert_newlines
