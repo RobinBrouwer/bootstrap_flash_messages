@@ -11,6 +11,8 @@ module BootstrapFlashMessages
         
         messages = []
         flash.each do |key, value|
+          next if key == :timedout
+
           heading = ""
           if show_heading
             heading_text = I18n.t("flash_messages.headings.#{key}")
