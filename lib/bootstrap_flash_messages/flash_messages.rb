@@ -36,7 +36,7 @@ module BootstrapFlashMessages
         flash.now[key] = flash_messages(key, options[:locals])
       end
       options.except(:locals).each do |key, value|
-        flash[key] = value
+        flash.now[key] = value
       end
     end
 
