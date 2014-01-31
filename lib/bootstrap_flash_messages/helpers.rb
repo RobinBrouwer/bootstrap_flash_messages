@@ -6,13 +6,13 @@ module BootstrapFlashMessages
         show_heading = args.include?(:heading)
         show_close = args.include?(:close)
         unescape_html = args.include?(:html)
-        convert_newlines = args.include?(:convert_newlines)
+        simple_format = args.include?(:simple_format)
         fade = args.include?(:fade)
         
         messages = []
         flash.each do |key, value|
           next if key == :timedout
-
+          
           heading = ""
           if show_heading
             heading_text = I18n.t("flash_messages.headings.#{key}")
@@ -20,16 +20,15 @@ module BootstrapFlashMessages
           end
           close = ""
           if show_close
-            #close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
-            close = content_tag :button, raw("&times;"), :type => 'button', :class => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'
+            close = content_tag(:button, raw("&times;"), :type => "button", :class => "close", "data-dismiss" => "alert", "aria-hidden" => "true")
           end
           
-          value.gsub!("\n", "<br/>") if convert_newlines
+          value = simple_format(value) if simple_format
+          value = raw(value) if unescape_html
           
-          messages << content_tag(:div, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" alert-block" if block}#{" fade in" if fade}") do
-            close + heading + " " + (unescape_html || convert_newlines ? raw(value) : value)
-          end
+          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" alert-block" if block}#{" fade in" if fade}")
         end
+        
         raw(messages.join)
       end
     end

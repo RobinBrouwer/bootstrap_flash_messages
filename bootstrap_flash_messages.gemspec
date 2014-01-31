@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.version     = BootstrapFlashMessages::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Robin Brouwer"]
-  s.email       = ["robin@45north.nl"]
-  s.homepage    = "http://www.45north.nl"
+  s.email       = ["robin@montblanc.nl"]
+  s.homepage    = "http://www.montblanc.nl"
   s.summary     = %q{Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.}
   s.description = %q{Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.}
   

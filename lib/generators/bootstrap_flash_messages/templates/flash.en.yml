@@ -9,6 +9,14 @@ en:
       warning: "Warning!"
       error: "Error!"
     #
+    # Add default flash messages:
+    # defaults:
+    #   success: "This is a notification"
+    #   error: "Something went wrong"
+    #   create:
+    #     success: "Successfully created!"
+    #     error: "Something went wrong. Please take a look at the form to see what went wrong."
+    #
     # Add flash messages for controller actions:
     # products:
     #   create:

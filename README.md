@@ -11,7 +11,9 @@ Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
 
 You can use this gem by putting the following inside your Gemfile:
 
-    gem "bootstrap_flash_messages"
+    gem "bootstrap_flash_messages", "~> 1.0.0"
+
+When you're using Bootstrap 2, you can use version 0.0.7.
 
 Now you need flash.en.yml for the flash messages.
 
@@ -21,6 +23,14 @@ And that's it!
 
 
 ## Changes
+
+Version 1.0.0 changes (31/01/2014):
+    
+    - Added Boostrap 3 support.
+    - Added default locales for the flash messages.
+    - Removed the 'convert_newlines' option and added 'simple_format'.
+    - Added option to set flash values directly inside 'flash!' and 'flash_now!'.
+    - Changed the documentation.
 
 Version 0.0.7 changes (26/01/2013):
     
@@ -66,9 +76,9 @@ Version 0.0.1 changes (08/08/2012):
 
 ## Usage
 
-You need [Twitter Bootstrap](http://twitter.github.com/bootstrap) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://twitter.github.com/bootstrap/components.html#alerts).
+You need [Bootstrap 3](http://getbootstrap.com/) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://getbootstrap.com/components/#alerts).
 
-If you're [customizing Bootstrap](http://twitter.github.com/bootstrap/customize.html), make sure to grab the "Alert Messages", "Component Animations", and "Transitions" (the latter two are optional, unless you want the fade-out animation on close).
+If you're [customizing Bootstrap](http://getbootstrap.com/customize/), make sure to grab the "Alert" and "Component Animations" (the latter one is optional, unless you want the fade-out animation on close).
 
 All flash messages are defined inside config/locales/flash.en.yml. They are nested like this:
 
@@ -88,7 +98,16 @@ You have four keys:
     :warning
     :error
 
-When you've defined the messages it's really easy to call them inside your Controller.
+It is also possible to add default locales globally or per action:
+    
+    en:
+      flash_messages:
+        defaults:
+          success: "It really worked!"
+          create:
+            success: "Created successfully!"
+
+When you've defined the messages it's very easy to call them inside your Controller.
 
     class PostsController
       def create
@@ -106,16 +125,25 @@ You can use the `:flash` parameter inside the `redirect_to` method (note: this g
 
     redirect_to(@post, :flash => [:success, :info])
 
-You can still use a Hash to use the default `redirect_to` behavior. When you don't want to use the `redirect_to` method to set the flash messages, you can use the `flash!` method.
+You can still use a Hash to use the default `redirect_to` behavior.
+
+    redirect_to(:root, :flash => { :error => I18n.t("flash_messages.authorize_admin") })
+
+When you don't want to use the `redirect_to` method to set the flash messages, you can use the `flash!` method.
 
     flash!(:success, :info)
     redirect_to(@post)
 
-When you need to use `flash.now` you can use the new `flash_now!` method.
+When you need to use `flash.now` you can use the `flash_now!` method.
 
     flash_now!(:error, :warning)
 
 You use `flash_now!` in combination with rendering a view instead of redirecting.
+
+You can also pass options to `flash!` and `flash_now!` to set the flash values directly.
+
+    flash!(:error => I18n.t("flash_messages.authorize_admin"))
+    flash_now!(:error => I18n.t("flash_messages.authorize_admin"))
 
 Now's the time to show these messages to the user. Inside the layout (or any other view), add the following:
 
@@ -145,9 +173,9 @@ Need to display HTML inside the flash messages? Use the `:html` option.
 
     <%= flash_messages(:html) %>
 
-It's also possible to convert new-lines (\n) into br-tags using the `:convert_newlines` option. This option also unescapes all other HTML, so use it with care.
+It's also possible to use simple_format on the flash message using the `:simple_format` option.
 
-    <%= flash_messages(:convert_newlines) %>
+    <%= flash_messages(:simple_format) %>
 
 And that's it! Have fun. :)
 
@@ -171,7 +199,7 @@ You can map the keys used inside the flash messages to a different alert class. 
     alert-success
     alert-info
     alert-warning
-    alert-error
+    alert-danger
 
 When you use `:notice` the alert class is mapped (by default) to `alert-success`. So it looks like this:
 
@@ -179,17 +207,17 @@ When you use `:notice` the alert class is mapped (by default) to `alert-success`
     :success maps to "alert-success"
     :info    maps to "alert-info"
     :warning maps to "alert-warning"
-    :error   maps to "alert-error"
+    :error   maps to "alert-danger"
 
 Changing the mapping is quite easy. Create an initializer (config/initializers/bootstrap_flash_messages.rb) and add the following:
 
     module BootstrapFlashMessages
       @alert_class_mapping = {
-        :notice => :error,
+        :notice => :danger,
         :success => :success,
         :info => :info,
         :warning => :warning,
-        :error => :error
+        :error => :danger
       }
     end
 
@@ -198,7 +226,7 @@ Now you can map whatever alert class you want to the different keys.
 ## Why I created this gem
 
 I created the [gritter gem](https://github.com/RobinBrouwer/gritter) and used it in a lot of projects.
-I started using Twitter Bootstrap and really liked the alerts. I loved the way gritter allowed you to set messages
+I started using Bootstrap and really liked the alerts. I loved the way gritter allowed you to set messages
 and decided to do the same for the Bootstrap alerts. And this is the result!
 
 ## Copyright

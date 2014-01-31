@@ -25,6 +25,9 @@ module BootstrapFlashMessages
       args.each do |key|
         flash[key] = flash_messages(key, options[:locals])
       end
+      options.except(:locals).each do |key, value|
+        flash[key] = value
+      end
     end
 
     def flash_now!(*args)
@@ -32,13 +35,31 @@ module BootstrapFlashMessages
       args.each do |key|
         flash.now[key] = flash_messages(key, options[:locals])
       end
+      options.except(:locals).each do |key, value|
+        flash[key] = value
+      end
     end
 
     def flash_messages(key, *args)
       i18n_key = "flash_messages.#{params[:controller]}.#{params[:action]}.#{key}"
+      i18n_default_key = "flash_messages.defaults.#{key}"
+      i18n_default_action_key = "flash_messages.defaults.#{params[:action]}.#{key}"
+      i18n_key.gsub!(/\//, ".")
       options = args.extract_options!
-      options[:default] = i18n_key.to_sym
-      I18n.t(i18n_key.gsub(/\//, "."), options).html_safe
+      
+      begin
+        options[:raise] = true
+        translation = I18n.t(i18n_key, options)
+      rescue I18n::MissingTranslationData
+        begin
+          translation = I18n.t(i18n_default_action_key, options)
+        rescue I18n::MissingTranslationData
+          options[:raise] = false
+          translation = I18n.t(i18n_default_key, options)
+        end
+      end
+      
+      translation
     end
   end
 end
