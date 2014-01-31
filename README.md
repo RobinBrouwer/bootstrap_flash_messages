@@ -1,8 +1,8 @@
 # bootstrap_flash_messages
 
-    version 0.0.7
+    version 1.0.0
     Robin Brouwer
-    45north
+    montblanc
 
 Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
 
@@ -161,13 +161,13 @@ If you'd like for the flash message to fade out when you click on the close icon
 
     <%= flash_messages(:close, :fade) %>
 
-Want to use the `.alert-block` class? Just add `:block`.
-
-    <%= flash_messages(:close, :block) %>
-
 Want a heading? Add `:heading`. The headings inside flash.en.yml are used for the headings.
 
-    <%= flash_messages(:close, :block, :heading) %>
+    <%= flash_messages(:close, :heading) %>
+
+Want to put the heading inside a `<h4>` tag? Just add `:block`.
+
+    <%= flash_messages(:close, :heading, :block) %>
 
 Need to display HTML inside the flash messages? Use the `:html` option.
 

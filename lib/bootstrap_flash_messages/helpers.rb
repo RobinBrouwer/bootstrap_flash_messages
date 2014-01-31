@@ -26,7 +26,7 @@ module BootstrapFlashMessages
           value = simple_format(value) if simple_format
           value = raw(value) if unescape_html
           
-          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" alert-block" if block}#{" fade in" if fade}")
+          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" fade in" if fade}")
         end
         
         raw(messages.join)
