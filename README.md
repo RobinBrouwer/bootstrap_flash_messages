@@ -151,7 +151,7 @@ Now's the time to show these messages to the user. Inside the layout (or any oth
 
 And that's it! To change the flash messages inside a `.js.erb` file, you can do the following:
 
-    $("#flash_messages").html("#{j(flash_messages)}");
+    $("#flash_messages").html("<%= j(flash_messages) %>");
 
 The `flash_messages` helper shows a simple Bootstrap alert box. If you want to add a close button you can add the `:close` option.
 
