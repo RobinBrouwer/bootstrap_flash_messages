@@ -20,12 +20,13 @@ module BootstrapFlashMessages
           end
           close = ""
           if show_close
-            close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
+            #close = link_to(raw("&times;"), "#", :class => "close", :data => { :dismiss => "alert" })
+            close = content_tag :button, raw("&times;"), :type => 'button', :class => 'close', 'data-dismiss' => 'alert', 'aria-hidden' => 'true'
           end
           
           value.gsub!("\n", "<br/>") if convert_newlines
           
-          messages << content_tag(:div, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{" alert-block" if block}#{" fade in" if fade}") do
+          messages << content_tag(:div, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" alert-block" if block}#{" fade in" if fade}") do
             close + heading + " " + (unescape_html || convert_newlines ? raw(value) : value)
           end
         end
