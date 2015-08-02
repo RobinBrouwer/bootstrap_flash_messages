@@ -1,8 +1,7 @@
 # bootstrap_flash_messages
 
-    version 1.0.0
+    version 1.0.1
     Robin Brouwer
-    montblanc
 
 Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
 
@@ -11,7 +10,7 @@ Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
 
 You can use this gem by putting the following inside your Gemfile:
 
-    gem "bootstrap_flash_messages", "~> 1.0.0"
+    gem "bootstrap_flash_messages", "~> 1.0.1"
 
 When you're using Bootstrap 2, you can use version 0.0.7.
 
