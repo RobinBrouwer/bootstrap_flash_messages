@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 1.0.1
+    version 1.0.2
     Robin Brouwer
 
 Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
@@ -22,6 +22,14 @@ And that's it!
 
 
 ## Changes
+
+Version 1.0.2 changes (05/08/2015):
+    
+    - Added :fade_in.
+
+Version 1.0.1 changes (02/08/2015):
+    
+    - Made 'info' the default class.
 
 Version 1.0.0 changes (31/01/2014):
     
@@ -160,22 +168,24 @@ If you'd like for the flash message to fade out when you click on the close icon
 
     <%= flash_messages(:close, :fade) %>
 
-If you'd like for the flash message to also fade in, you can pass in the `:js_fade` option. 
+If you'd like for the flash message to also fade in, you can pass in the `:fade_in` option. 
 
-    <%= flash_messages(:close, :js_fade) %>
-    # Also add something like this to your application.js.
-    window.setTimeout(function () {
-        $(".alert").addClass("in");
+    <%= flash_messages(:close, :fade, :fade_in) %>
+    
+    # Also add something like this to application.js:
+    window.setTimeout(function() {
+      $(".alert").addClass("in");
     }, 1000);
-    # And your application.css
-    .fade {
+    
+    # If you didn't add the "Component Animations" to your Bootstrap configuration, add this to application.css:
+    .alert.fade {
       opacity: 0;
       -webkit-transition: opacity 0.15s linear;
       -moz-transition: opacity 0.15s linear;
       -o-transition: opacity 0.15s linear;
       transition: opacity 0.15s linear;
     }
-    .fade.in {
+    .alert.fade.in {
       opacity: 1;
     }
 
