@@ -8,6 +8,7 @@ module BootstrapFlashMessages
         unescape_html = args.include?(:html)
         simple_format = args.include?(:simple_format)
         fade = args.include?(:fade)
+        js_fade = args.include?(:js_fade)
         
         messages = []
         flash.each do |key, value|
@@ -26,7 +27,7 @@ module BootstrapFlashMessages
           value = simple_format(value) if simple_format
           value = raw(value) if unescape_html
           
-          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" fade in" if fade}")
+          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{fade ? " fade in" : (js_fade ? " fade" : "")}")
         end
         
         raw(messages.join)

@@ -160,6 +160,25 @@ If you'd like for the flash message to fade out when you click on the close icon
 
     <%= flash_messages(:close, :fade) %>
 
+If you'd like for the flash message to also fade in, you can pass in the `:js_fade` option. 
+
+    <%= flash_messages(:close, :js_fade) %>
+    # Also add something like this to your application.js.
+    window.setTimeout(function () {
+        $(".alert").addClass("in");
+    }, 1000);
+    # And your application.css
+    .fade {
+      opacity: 0;
+      -webkit-transition: opacity 0.15s linear;
+      -moz-transition: opacity 0.15s linear;
+      -o-transition: opacity 0.15s linear;
+      transition: opacity 0.15s linear;
+    }
+    .fade.in {
+      opacity: 1;
+    }
+
 Want a heading? Add `:heading`. The headings inside flash.en.yml are used for the headings.
 
     <%= flash_messages(:close, :heading) %>
