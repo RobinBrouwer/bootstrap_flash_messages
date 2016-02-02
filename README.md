@@ -257,7 +257,9 @@ I created the [gritter gem](https://github.com/RobinBrouwer/gritter) and used it
 I started using Bootstrap and really liked the alerts. I loved the way gritter allowed you to set messages
 and decided to do the same for the Bootstrap alerts. And this is the result!
 
-## Copyright
+## License
+
+### The MIT License (MIT)
 
 Copyright (C) 2012 Robin Brouwer
 
