@@ -13,6 +13,7 @@ module BootstrapFlashMessages
         messages = []
         flash.each do |key, value|
           next if key == :timedout
+          next if value.blank?
           
           heading = ""
           if show_heading
