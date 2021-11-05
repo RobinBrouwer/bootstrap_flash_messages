@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 1.0.2
+    version 1.0.3
     Robin Brouwer
 
 Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
@@ -24,15 +24,15 @@ And that's it!
 ## Changes
 
 Version 1.0.2 changes (05/08/2015):
-    
+
     - Added :fade_in.
 
 Version 1.0.1 changes (02/08/2015):
-    
+
     - Made 'info' the default class.
 
 Version 1.0.0 changes (31/01/2014):
-    
+
     - Added Boostrap 3 support.
     - Added default locales for the flash messages.
     - Removed the 'convert_newlines' option and added 'simple_format'.
@@ -40,41 +40,41 @@ Version 1.0.0 changes (31/01/2014):
     - Changed the documentation.
 
 Version 0.0.7 changes (26/01/2013):
-    
+
     - Added alert_class_mapping (documentation below).
 
 Version 0.0.6 changes (27/09/2012):
-    
+
     - Added pull request #5 by protolif. This adds the :fade option.
 
 Version 0.0.5 changes (24/09/2012):
-    
+
     - Added HTML escape option for flash_messages helper (:html).
     - Also added option to convert new-lines to br-tags (:convert_newlines).
 
 Version 0.0.4 changes (03/09/2012):
-    
+
     - Namespaced Controllers can be accessed by nesting your locales.
-      
+
     # Old
     "admin/products":
       ...
-    
+
     # New:
     admin:
       products:
         ...
 
 Version 0.0.3 changes (14/08/2012):
-    
+
     - Added interpolation to the flash messages
-    
+
 Version 0.0.2 changes (10/08/2012):
-    
+
     - Changed the 'x' in close to & t i m e s ;
 
 Version 0.0.1 changes (08/08/2012):
-    
+
     - Changed redirect_to method
     - Added flash! and flash_now! methods
     - Added flash_messages helper
@@ -99,14 +99,14 @@ All flash messages are defined inside config/locales/flash.en.yml. They are nest
             error: "Oh no! Something went wrong."
 
 You have four keys:
-    
+
     :success
     :info
     :warning
     :error
 
 It is also possible to add default locales globally or per action:
-    
+
     en:
       flash_messages:
         defaults:
@@ -168,15 +168,15 @@ If you'd like for the flash message to fade out when you click on the close icon
 
     <%= flash_messages(:close, :fade) %>
 
-If you'd like for the flash message to also fade in, you can pass in the `:fade_in` option. 
+If you'd like for the flash message to also fade in, you can pass in the `:fade_in` option.
 
     <%= flash_messages(:close, :fade, :fade_in) %>
-    
+
     # Also add something like this to application.js:
     window.setTimeout(function() {
       $(".alert").addClass("in");
     }, 1000);
-    
+
     # If you didn't add the "Component Animations" to your Bootstrap configuration, add this to application.css:
     .alert.fade {
       opacity: 0;
