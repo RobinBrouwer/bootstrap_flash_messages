@@ -49,13 +49,13 @@ module BootstrapFlashMessages
       
       begin
         options[:raise] = true
-        translation = I18n.t(i18n_key, options)
+        translation = I18n.t(i18n_key, **options)
       rescue I18n::MissingTranslationData
         begin
-          translation = I18n.t(i18n_default_action_key, options)
+          translation = I18n.t(i18n_default_action_key, **options)
         rescue I18n::MissingTranslationData
           options[:raise] = false
-          translation = I18n.t(i18n_default_key, options)
+          translation = I18n.t(i18n_default_key, **options)
         end
       end
       

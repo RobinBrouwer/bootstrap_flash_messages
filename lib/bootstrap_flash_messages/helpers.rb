@@ -17,17 +17,17 @@ module BootstrapFlashMessages
           heading = ""
           if show_heading
             heading_text = I18n.t("flash_messages.headings.#{key}")
-            heading = (block ? content_tag(:h4, heading_text, :class => "alert-heading") : content_tag(:strong, heading_text))
+            heading = (block ? content_tag(:h4, heading_text, class: "alert-heading") : content_tag(:strong, heading_text))
           end
           close = ""
           if show_close
-            close = content_tag(:button, raw("&times;"), :type => "button", :class => "close", "data-dismiss" => "alert", "aria-hidden" => "true")
+            close = content_tag(:button, nil, type: "button", class: "btn-close", "data-bs-dismiss" => "alert", "aria-label" => "Close")
           end
           
           value = simple_format(value) if simple_format
           value = raw(value) if unescape_html
           
-          messages << content_tag(:div, close + heading + " " + value, :class => "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissable' if show_close}#{" fade#{" in" unless fade_in}" if fade || fade_in}")
+          messages << content_tag(:div, raw(heading + " " + value + close), role: "alert", class: "alert alert-#{BootstrapFlashMessages.alert_class_mapping(key)}#{' alert-dismissible' if show_close}#{" fade#{" show" unless fade_in}" if fade || fade_in}")
         end
         
         raw(messages.join)

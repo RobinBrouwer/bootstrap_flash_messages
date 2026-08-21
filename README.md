@@ -1,6 +1,6 @@
 # bootstrap_flash_messages
 
-    version 1.0.2
+    version 1.1.0
     Robin Brouwer
 
 Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
@@ -10,9 +10,9 @@ Bootstrap alerts and Rails flash messages combined in one easy-to-use gem.
 
 You can use this gem by putting the following inside your Gemfile:
 
-    gem "bootstrap_flash_messages", "~> 1.0.1"
+    gem "bootstrap_flash_messages", "~> 1.1.0"
 
-When you're using Bootstrap 2, you can use version 0.0.7.
+When you're using Bootstrap 3, you can use version 1.0.2. When you're using Bootstrap 2, you can use version 0.0.7.
 
 Now you need flash.en.yml for the flash messages.
 
@@ -22,6 +22,10 @@ And that's it!
 
 
 ## Changes
+
+Version 1.1.0 changes (21/08/2026):
+    
+    - Updated to latest Bootstrap, Ruby & Rails version.
 
 Version 1.0.2 changes (05/08/2015):
     
@@ -83,9 +87,7 @@ Version 0.0.1 changes (08/08/2012):
 
 ## Usage
 
-You need [Bootstrap 3](http://getbootstrap.com/) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](http://getbootstrap.com/components/#alerts).
-
-If you're [customizing Bootstrap](http://getbootstrap.com/customize/), make sure to grab the "Alert" and "Component Animations" (the latter one is optional, unless you want the fade-out animation on close).
+You need [Bootstrap 5](http://getbootstrap.com/) for the styling and close button. You can still use it without Bootstrap, but you need to style it yourself. This gem uses the [Bootstrap alerts](https://getbootstrap.com/docs/5.3/components/alerts/).
 
 All flash messages are defined inside config/locales/flash.en.yml. They are nested like this:
 
@@ -174,20 +176,9 @@ If you'd like for the flash message to also fade in, you can pass in the `:fade_
     
     # Also add something like this to application.js:
     window.setTimeout(function() {
-      $(".alert").addClass("in");
+      $(".alert").addClass("show");
     }, 1000);
     
-    # If you didn't add the "Component Animations" to your Bootstrap configuration, add this to application.css:
-    .alert.fade {
-      opacity: 0;
-      -webkit-transition: opacity 0.15s linear;
-      -moz-transition: opacity 0.15s linear;
-      -o-transition: opacity 0.15s linear;
-      transition: opacity 0.15s linear;
-    }
-    .alert.fade.in {
-      opacity: 1;
-    }
 
 Want a heading? Add `:heading`. The headings inside flash.en.yml are used for the headings.
 
