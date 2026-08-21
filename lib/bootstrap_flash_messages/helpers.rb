@@ -11,8 +11,9 @@ module BootstrapFlashMessages
         fade_in = args.include?(:fade_in)
         
         messages = []
+        flash = flash.with_indifferent_access
         flash.each do |key, value|
-          next if key == :timedout
+          next if key == 'timedout'
           
           heading = ""
           if show_heading
